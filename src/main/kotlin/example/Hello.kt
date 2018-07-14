@@ -1,11 +1,19 @@
 package example
 
-import javafx.geometry.Pos
 import tornadofx.*
 
 class HelloWorld : View() {
-    override val root = hbox {
-        label("Hello world")
+    private val label = label("Hello, TornadoFX!")
+
+    override val root = vbox {
+        menubar {
+            menu("Menu") {
+                item("Change Text").setOnAction { _ ->
+                    label.text = "Changed"
+                }
+            }
+        }
+        add(label)
     }
 }
 
@@ -14,8 +22,7 @@ class HelloWorldStyle : Stylesheet() {
         root {
             prefWidth = 400.px
             prefHeight = 400.px
-            alignment = Pos.CENTER
-            fontSize = 50.px
+            fontSize = 20.px
         }
     }
 }
